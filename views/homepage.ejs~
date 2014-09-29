@@ -1,0 +1,73 @@
+        <div class="container">		
+
+	    <script src="/js/jquery.min.js"></script>
+	    <script src="/js/modernizr.custom.js"></script>
+	
+			<header class="codrops-header">
+				<h1>TÁXI do Aeroporto<span>Quanto custa a corrida?</span></h1>	
+			</header>
+			<section>
+				<form id="theForm" class="simform" autocomplete="off" action="/route/calculate">
+					<div class="simform-inner">
+						<ol class="questions">
+							<li>
+								<span><label for="from">Onde você exatamente está?</label></span>
+								<input id="from" name="from" type="text"/>
+							</li>
+							<li>
+								<span><label for="to">Pretende chegar exatamente onde?</label></span>
+								<input id="to" name="to" type="text"/>
+							</li>
+							<li>
+								<span><label for="currency">Vai pagar com qual moeda?</label></span>
+                                <input id="currency" name="currency" list="currencies" type="text"/>
+								<datalist id="currencies" name="currency">
+                                    <option value="USD">Dólar Americano</option>
+                                    <option value="CAD">Dólar Canadense</option>                                    
+                                    <option value="EUR">Euro</option>
+                                    <option value="CNY">Iuan</option>
+                                    <option value="GBP">Libra Esterlina</option>                                     
+                                    <option value="ARS">Peso Argentino</option>
+                                    <option value="MXN">Peso Mexicano</option>                                    
+                                    <option value="BRL">Real</option>
+                                </datalist>
+							</li>
+						</ol>
+						<button class="submit" type="submit">Calcular</button>
+						<div class="controls">
+							<button class="next"></button>
+							<div class="progress"></div>
+							<span class="number">
+								<span class="number-current"></span>
+								<span class="number-total"></span>
+							</span>
+							<span class="error-message"></span>
+						</div><!-- / controls -->
+					</div><!-- /simform-inner -->
+					<span class="final-message"></span>
+				</form><!-- /simform -->			
+			</section>
+		</div><!-- /container -->
+		<script>
+           $( document ).ready(function() {
+                var theForm = document.getElementById( 'theForm' );
+
+                new stepsForm( theForm, {
+                    onSubmit : function( form ) {
+                        // hide form
+                        classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+
+                        /*
+                        form.submit()
+                        or
+                        AJAX request (maybe show loading indicator while we don't have an answer..)
+                        */
+
+                        // let's just simulate something...
+                        var messageEl = theForm.querySelector( '.final-message' );
+                        messageEl.innerHTML = 'Thank you! We\'ll be in touch.';
+                        classie.addClass( messageEl, 'show' );
+                    }
+                });
+            });
+		</script>
